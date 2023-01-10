@@ -1,0 +1,38 @@
+{
+    "general": {
+        "name": "korch",
+        "version": "0.1"
+    },
+    "kubernetes": {
+        "library":  "kubernetes",
+        "config" : {
+            "kubeconfig": "/home/s/.kube/config"
+        }
+    },
+    "deployments": {
+        "docker-hello-world": {
+            "display_name" : "Hello World Docker with Netcat",
+            "repo_url": "https://github.com/crccheck/docker-hello-world",
+            "container_port": 8000,
+            "published_port": 9000
+        },
+        "python-flask-docker": {
+            "display_name" : "Python Flask Docker",
+            "repo_url": "https://github.com/lvthillo/python-flask-docker",
+            "container_port": 8080,
+            "published_port": 9001
+        },
+        "docker-nginx-hello-world": {
+            "display_name" : "Single page docker nginx",
+            "repo_url": "https://github.com/Einsteinish/docker-nginx-hello-world",
+            "container_port": 80,
+            "published_port": 9002
+        },
+        "docker-hello-world-spring-boot": {
+            "display_name" : "Hello World sample shows how to deploy SpringBoot RESTful web service application with Docker",
+            "repo_url": "https://github.com/dstar55/docker-hello-world-spring-boot",
+            "container_port": 8080,
+            "published_port": 9003
+        }
+    }
+}
