@@ -27,9 +27,9 @@ class K8sProvider:
         log.info("Deploying "+name+" - "+deployment_file+"...")
         utils.create_from_yaml( self.driver.ApiClient(), deployment_file)
 
-    def deploy(self, name, deployment_file):
-        log.info("Deploying "+name+"...")
-        with open(deployment_file) as f:
-            dep = yaml.safe_load(f)
-            resp = self.driver.AppsV1Api().create_namespaced_deployment(body=dep, namespace="default")
-            log.info("Deployment created. status='%s'" % resp.metadata.name)
+    #def deploy(self, name, deployment_file):
+    #    log.info("Deploying "+name+"...")
+    #    with open(deployment_file) as f:
+    #        dep = yaml.safe_load(f)
+    #        resp = self.driver.AppsV1Api().create_namespaced_deployment(body=dep, namespace="default")
+    #        log.info("Deployment created. status='%s'" % resp.metadata.name)

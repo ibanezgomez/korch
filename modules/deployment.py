@@ -14,26 +14,37 @@ class Deployment:
     name         = ""
     display_name = ""
     deployment_file_path = ""
-    service_file_path = ""
     result_path = ""
 
     def __init__(self, k8s_provider, *kwargs):
         log.info("Loading deployment...")
         self.k8s_provider=k8s_provider
-        self.name=kwargs[0]['name']
-        self.repo_url=kwargs[0]['repo_url']
-        self.display_name=kwargs[0]['display_name']
-        self.result_path="tmp/"+self.name
-        self.deployment_file_path=self.result_path+"/deployment.yaml"
-        self.service_file_path=self.result_path+"/service.yaml"
-        self.published_port=kwargs[0]['published_port']
-        self.container_port=kwargs[0]['container_port']
 
-        try:
-            os.mkdir(self.result_path)
-            Repo.clone_from(self.repo_url, self.result_path)
-        except:
-            log.info("Continue... it exists.")
+        # Mandatory fields
+        self.name=kwargs[0]['name']
+        self.display_name=kwargs[0]['display_name']
+        self.kind=kwargs[0]['kind']
+        self.needs_service=kwargs[0]['service']
+
+        # Optional fields
+        if 'published_port' in kwargs[0]: self.published_port=kwargs[0]['published_port']
+        if 'container_port' in kwargs[0]: self.container_port=kwargs[0]['container_port']
+        if 'command' in kwargs[0]: self.command=kwargs[0]['command']
+
+        # Local or git
+        if 'repo_url' in kwargs[0]: 
+            self.repo_url=kwargs[0]['repo_url']
+            self.result_path="tmp/"+self.name
+            try:
+                os.mkdir(self.result_path)
+                Repo.clone_from(self.repo_url, self.result_path)
+            except:
+                log.info("Continue... it exists.")
+        elif 'path' in kwargs[0]: 
+            self.result_path="tmp/"+kwargs[0]['path']
+
+        # Finally, deployment file
+        self.deployment_file_path=self.result_path+"/"+self.kind+".yaml"
 
     def getName(self):
         return self.name
@@ -65,44 +76,64 @@ class Deployment:
     def setResult(self):
         log.debug('[setResult] %s' % self.getDisplayName())
 
-        # Service tpl create stage
-        with open("tmp/base_service.yaml") as f:
-            list_doc = yaml.safe_load(f)
-            list_doc['metadata']['name']=self.name
-            list_doc['metadata']['labels']['name']=self.name
-            list_doc['spec']['selector']['name']=self.name
-            list_doc['spec']['ports'][0]['port']=self.published_port
-            list_doc['spec']['ports'][0]['targetPort']=self.container_port
-            with open(self.service_file_path, "w") as f:
-                yaml.dump(list_doc, f)
+        if self.needs_service:
+            service_file_path=self.result_path+"/service.yaml"
+            log.debug('[onStartDeploy] Service tpl create stage %s' % self.getDisplayName())
+            with open("tmp/base_service.yaml") as f:
+                list_doc = yaml.safe_load(f)
+                list_doc['metadata']['name']=self.name
+                list_doc['metadata']['labels']['name']=self.name
+                list_doc['spec']['selector']['name']=self.name
+                list_doc['spec']['ports'][0]['port']=self.published_port
+                list_doc['spec']['ports'][0]['targetPort']=self.container_port
+                with open(service_file_path, "w") as f:
+                    yaml.dump(list_doc, f)
 
-        self.k8s_provider.apply(self.name, self.service_file_path)
+            self.k8s_provider.apply(self.name, service_file_path)
         self.result = "Deploy & service finished, time for a beer ;-)"
+
         return True
 
     def onStartDeploy(self):
         log.debug('[onStartDeploy] %s' % self.getDisplayName())
         img_name='minikube/'+self.name
-        
-        # Build stage
+
+        #log.debug('[onStartDeploy] Use Doeker environment %s' % self.getDisplayName())
+        #with open("tmp/build.log", "a") as output:
+        #    subprocess.call("eval $(minikube docker-env)", shell=True, stdout=output, stderr=output)
+         
+        log.debug('[onStartDeploy] Build stage %s' % self.getDisplayName())
         with open("/tmp/build.log", "a") as output:
             subprocess.call("docker build -t "+img_name+" "+self.result_path, shell=True, stdout=output, stderr=output)
+
+        log.debug('[onStartDeploy] Deployment tpl create stage %s' % self.getDisplayName())
+        if self.kind=="job":
+             with open("tmp/base_job.yaml") as f:
+                list_doc = yaml.safe_load(f)
+                list_doc['metadata']['name']=self.name
+                list_doc['spec']['template']['metadata']['name']=self.name
+                list_doc['spec']['template']['spec']['containers'][0]['name']=self.name
+                list_doc['spec']['template']['spec']['containers'][0]['image']=img_name
+                #list_doc['spec']['template']['spec']['containers'][0]['command']=self.command
+        else:
+            with open("tmp/base_deployment.yaml") as f:
+                list_doc = yaml.safe_load(f)
+                list_doc['metadata']['name']=self.name
+                list_doc['metadata']['labels']['name']=self.name
+                list_doc['spec']['selector']['matchLabels']['name']=self.name
+                list_doc['spec']['template']['metadata']['labels']['name']=self.name
+                list_doc['spec']['template']['spec']['containers'][0]['name']=self.name
+                list_doc['spec']['template']['spec']['containers'][0]['image']=img_name
+                list_doc['spec']['template']['spec']['containers'][0]['ports'][0]['containerPort']=self.container_port
+
+        with open(self.deployment_file_path, "w") as f:
+            yaml.dump(list_doc, f)
+
+        log.debug('[onStartDeploy] Delete old image %s' % self.getDisplayName())
+        with open("tmp/build.log", "a") as output:
+            subprocess.call("minikube image rm "+img_name, shell=True, stdout=output, stderr=output)
         
-        # Deployment tpl create stage
-        with open("tmp/base_deployment.yaml") as f:
-            list_doc = yaml.safe_load(f)
-            list_doc['metadata']['name']=self.name
-            list_doc['metadata']['labels']['name']=self.name
-            list_doc['spec']['selector']['matchLabels']['name']=self.name
-            list_doc['spec']['template']['metadata']['labels']['name']=self.name
-            list_doc['spec']['template']['spec']['containers'][0]['name']=self.name
-            list_doc['spec']['template']['spec']['containers'][0]['image']=img_name
-            list_doc['spec']['template']['spec']['containers'][0]['ports'][0]['containerPort']=self.container_port
-
-            with open(self.deployment_file_path, "w") as f:
-                yaml.dump(list_doc, f)
-
-        # Load stage  
+        log.debug('[onStartDeploy] Load stage %s' % self.getDisplayName())
         with open("tmp/build.log", "a") as output:
             subprocess.call("minikube image load "+img_name, shell=True, stdout=output, stderr=output)
 
@@ -110,9 +141,9 @@ class Deployment:
 
     def onDeploy(self):
         log.debug('[onDeploy] %s' % self.getDisplayName())
-        self.k8s_provider.deploy(self.name, self.deployment_file_path)
+        self.k8s_provider.apply(self.name, self.deployment_file_path)
         return True
-    
+     
     # Status values:
     #   -1 - Configuring job
     #    0 - Finished with error
@@ -132,4 +163,4 @@ class Deployment:
         log.error('[onFailureScan] %s' % display_name)
         self.setDeployStatus(0)
         return True
-
+    
