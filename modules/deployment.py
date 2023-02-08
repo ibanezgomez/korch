@@ -41,7 +41,7 @@ class Deployment:
             except:
                 log.info("Continue... it exists.")
         elif 'path' in kwargs[0]: 
-            self.result_path="tmp/"+kwargs[0]['path']
+            self.result_path=kwargs[0]['path']
 
         # Finally, deployment file
         self.deployment_file_path=self.result_path+"/"+self.kind+".yaml"
@@ -79,7 +79,7 @@ class Deployment:
         if self.needs_service:
             service_file_path=self.result_path+"/service.yaml"
             log.debug('[onStartDeploy] Service tpl create stage %s' % self.getDisplayName())
-            with open("tmp/base_service.yaml") as f:
+            with open("modules/templates/base_service.yaml") as f:
                 list_doc = yaml.safe_load(f)
                 list_doc['metadata']['name']=self.name
                 list_doc['metadata']['labels']['name']=self.name
@@ -103,12 +103,12 @@ class Deployment:
         #    subprocess.call("eval $(minikube docker-env)", shell=True, stdout=output, stderr=output)
          
         log.debug('[onStartDeploy] Build stage %s' % self.getDisplayName())
-        with open("/tmp/build.log", "a") as output:
+        with open("tmp/build.log", "a") as output:
             subprocess.call("docker build -t "+img_name+" "+self.result_path, shell=True, stdout=output, stderr=output)
 
         log.debug('[onStartDeploy] Deployment tpl create stage %s' % self.getDisplayName())
         if self.kind=="job":
-             with open("tmp/base_job.yaml") as f:
+             with open("modules/templates/base_job.yaml") as f:
                 list_doc = yaml.safe_load(f)
                 list_doc['metadata']['name']=self.name
                 list_doc['spec']['template']['metadata']['name']=self.name
@@ -116,7 +116,7 @@ class Deployment:
                 list_doc['spec']['template']['spec']['containers'][0]['image']=img_name
                 #list_doc['spec']['template']['spec']['containers'][0]['command']=self.command
         else:
-            with open("tmp/base_deployment.yaml") as f:
+            with open("modules/templates/base_deployment.yaml") as f:
                 list_doc = yaml.safe_load(f)
                 list_doc['metadata']['name']=self.name
                 list_doc['metadata']['labels']['name']=self.name

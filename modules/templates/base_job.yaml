@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: <app_name>
+spec:
+  template:
+    metadata:
+      name: <app_name>
+    spec:
+      containers:
+      - name: <app_name>
+        image: <image_name>
+        imagePullPolicy: Never
+      restartPolicy: Never

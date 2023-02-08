@@ -1,0 +1,110 @@
+2023-02-08 11:25:20,363 - [sysloger] - [ITSec] - DEBUG - scheduler.py - 72 - Initializing Scheduler
+2023-02-08 11:25:20,364 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,364 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,364 - [sysloger] - [ITSec] - DEBUG - main.py - 49 - Starting korch v0.1
+2023-02-08 11:25:20,364 - [sysloger] - [ITSec] - INFO - main.py - 51 - Loading K8s provider: kubernetes
+2023-02-08 11:25:20,953 - [sysloger] - [ITSec] - INFO - kubernetes.py - 10 - Starting K8s connection
+2023-02-08 11:25:20,957 - [sysloger] - [ITSec] - INFO - kubernetes.py - 15 - Loaded cluster: minikube
+2023-02-08 11:25:20,957 - [sysloger] - [ITSec] - INFO - main.py - 55 - Loading deployment id: docker-hello-world
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - deployment.py - 20 - Loading deployment...
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - deployment.py - 42 - Continue... it exists.
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - deployment.py - 98 - [onStartDeploy] docker-hello-world
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - main.py - 55 - Loading deployment id: python-flask-docker
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - deployment.py - 105 - [onStartDeploy] Build stage docker-hello-world
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - deployment.py - 20 - Loading deployment...
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - deployment.py - 42 - Continue... it exists.
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - DEBUG - deployment.py - 98 - [onStartDeploy] python-flask-docker
+2023-02-08 11:25:20,958 - [sysloger] - [ITSec] - INFO - main.py - 55 - Loading deployment id: docker-nginx-hello-world
+2023-02-08 11:25:20,959 - [sysloger] - [ITSec] - DEBUG - deployment.py - 105 - [onStartDeploy] Build stage python-flask-docker
+2023-02-08 11:25:20,959 - [sysloger] - [ITSec] - INFO - deployment.py - 20 - Loading deployment...
+2023-02-08 11:25:20,959 - [sysloger] - [ITSec] - INFO - deployment.py - 42 - Continue... it exists.
+2023-02-08 11:25:20,959 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,959 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,961 - [sysloger] - [ITSec] - DEBUG - deployment.py - 98 - [onStartDeploy] docker-nginx-hello-world
+2023-02-08 11:25:20,961 - [sysloger] - [ITSec] - INFO - main.py - 55 - Loading deployment id: docker-hello-world-spring-boot
+2023-02-08 11:25:20,961 - [sysloger] - [ITSec] - DEBUG - deployment.py - 105 - [onStartDeploy] Build stage docker-nginx-hello-world
+2023-02-08 11:25:20,963 - [sysloger] - [ITSec] - INFO - deployment.py - 20 - Loading deployment...
+2023-02-08 11:25:20,964 - [sysloger] - [ITSec] - INFO - deployment.py - 42 - Continue... it exists.
+2023-02-08 11:25:20,964 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,964 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,965 - [sysloger] - [ITSec] - DEBUG - deployment.py - 98 - [onStartDeploy] docker-hello-world-spring-boot
+2023-02-08 11:25:20,965 - [sysloger] - [ITSec] - INFO - main.py - 55 - Loading deployment id: sample-job
+2023-02-08 11:25:20,966 - [sysloger] - [ITSec] - DEBUG - deployment.py - 105 - [onStartDeploy] Build stage docker-hello-world-spring-boot
+2023-02-08 11:25:20,966 - [sysloger] - [ITSec] - INFO - deployment.py - 20 - Loading deployment...
+2023-02-08 11:25:20,966 - [sysloger] - [ITSec] - DEBUG - daemon.py - 12 - Initialized daemon
+2023-02-08 11:25:20,967 - [sysloger] - [ITSec] - DEBUG - daemon.py - 17 - Starting Thread
+2023-02-08 11:25:20,969 - [sysloger] - [ITSec] - DEBUG - deployment.py - 98 - [onStartDeploy] sample-job
+2023-02-08 11:25:20,969 - [sysloger] - [ITSec] - INFO - scheduler.py - 76 - Adding Job "DeploymentChecker"
+2023-02-08 11:25:20,975 - [sysloger] - [ITSec] - DEBUG - deployment.py - 105 - [onStartDeploy] Build stage sample-job
+2023-02-08 11:25:20,975 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:25:22,324 - [sysloger] - [ITSec] - DEBUG - deployment.py - 109 - [onStartDeploy] Deployment tpl create stage docker-hello-world
+2023-02-08 11:25:22,330 - [sysloger] - [ITSec] - DEBUG - deployment.py - 132 - [onStartDeploy] Delete old image docker-hello-world
+2023-02-08 11:25:22,432 - [sysloger] - [ITSec] - DEBUG - deployment.py - 109 - [onStartDeploy] Deployment tpl create stage docker-nginx-hello-world
+2023-02-08 11:25:22,435 - [sysloger] - [ITSec] - DEBUG - deployment.py - 132 - [onStartDeploy] Delete old image docker-nginx-hello-world
+2023-02-08 11:25:22,462 - [sysloger] - [ITSec] - DEBUG - deployment.py - 109 - [onStartDeploy] Deployment tpl create stage python-flask-docker
+2023-02-08 11:25:22,466 - [sysloger] - [ITSec] - DEBUG - deployment.py - 132 - [onStartDeploy] Delete old image python-flask-docker
+2023-02-08 11:25:22,528 - [sysloger] - [ITSec] - DEBUG - deployment.py - 109 - [onStartDeploy] Deployment tpl create stage docker-hello-world-spring-boot
+2023-02-08 11:25:22,533 - [sysloger] - [ITSec] - DEBUG - deployment.py - 132 - [onStartDeploy] Delete old image docker-hello-world-spring-boot
+2023-02-08 11:25:22,613 - [sysloger] - [ITSec] - DEBUG - deployment.py - 109 - [onStartDeploy] Deployment tpl create stage sample-job
+2023-02-08 11:25:22,619 - [sysloger] - [ITSec] - DEBUG - deployment.py - 132 - [onStartDeploy] Delete old image sample-job
+2023-02-08 11:25:22,866 - [sysloger] - [ITSec] - DEBUG - deployment.py - 136 - [onStartDeploy] Load stage docker-hello-world
+2023-02-08 11:25:22,898 - [sysloger] - [ITSec] - DEBUG - deployment.py - 136 - [onStartDeploy] Load stage python-flask-docker
+2023-02-08 11:25:22,946 - [sysloger] - [ITSec] - DEBUG - deployment.py - 136 - [onStartDeploy] Load stage docker-hello-world-spring-boot
+2023-02-08 11:25:23,037 - [sysloger] - [ITSec] - DEBUG - deployment.py - 136 - [onStartDeploy] Load stage docker-nginx-hello-world
+2023-02-08 11:25:23,059 - [sysloger] - [ITSec] - DEBUG - deployment.py - 136 - [onStartDeploy] Load stage sample-job
+2023-02-08 11:25:25,627 - [sysloger] - [ITSec] - DEBUG - deployment.py - 143 - [onDeploy] docker-hello-world
+2023-02-08 11:25:25,628 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-hello-world - tmp/docker-hello-world/deployment.yaml...
+2023-02-08 11:25:25,670 - [sysloger] - [ITSec] - DEBUG - deployment.py - 77 - [setResult] docker-hello-world
+2023-02-08 11:25:25,670 - [sysloger] - [ITSec] - DEBUG - deployment.py - 81 - [onStartDeploy] Service tpl create stage docker-hello-world
+2023-02-08 11:25:25,673 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-hello-world - tmp/docker-hello-world/service.yaml...
+2023-02-08 11:25:25,751 - [sysloger] - [ITSec] - INFO - deployment.py - 158 - [onFinishedScan] docker-hello-world
+2023-02-08 11:25:25,767 - [sysloger] - [ITSec] - DEBUG - deployment.py - 153 - [setDeployStatus] docker-hello-world
+2023-02-08 11:25:29,192 - [sysloger] - [ITSec] - DEBUG - deployment.py - 143 - [onDeploy] docker-nginx-hello-world
+2023-02-08 11:25:29,193 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-nginx-hello-world - tmp/docker-nginx-hello-world/deployment.yaml...
+2023-02-08 11:25:29,229 - [sysloger] - [ITSec] - DEBUG - deployment.py - 77 - [setResult] docker-nginx-hello-world
+2023-02-08 11:25:29,229 - [sysloger] - [ITSec] - DEBUG - deployment.py - 81 - [onStartDeploy] Service tpl create stage docker-nginx-hello-world
+2023-02-08 11:25:29,232 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-nginx-hello-world - tmp/docker-nginx-hello-world/service.yaml...
+2023-02-08 11:25:29,309 - [sysloger] - [ITSec] - INFO - deployment.py - 158 - [onFinishedScan] docker-nginx-hello-world
+2023-02-08 11:25:29,310 - [sysloger] - [ITSec] - DEBUG - deployment.py - 153 - [setDeployStatus] docker-nginx-hello-world
+2023-02-08 11:25:30,977 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:25:40,982 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:25:51,001 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:26:01,007 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:26:02,829 - [sysloger] - [ITSec] - DEBUG - deployment.py - 143 - [onDeploy] sample-job
+2023-02-08 11:26:02,832 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying sample-job - src/sample-job/job.yaml...
+2023-02-08 11:26:02,958 - [sysloger] - [ITSec] - DEBUG - deployment.py - 77 - [setResult] sample-job
+2023-02-08 11:26:02,958 - [sysloger] - [ITSec] - INFO - deployment.py - 158 - [onFinishedScan] sample-job
+2023-02-08 11:26:02,958 - [sysloger] - [ITSec] - DEBUG - deployment.py - 153 - [setDeployStatus] sample-job
+2023-02-08 11:26:11,014 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:26:16,325 - [sysloger] - [ITSec] - DEBUG - deployment.py - 143 - [onDeploy] docker-hello-world-spring-boot
+2023-02-08 11:26:16,326 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-hello-world-spring-boot - tmp/docker-hello-world-spring-boot/deployment.yaml...
+2023-02-08 11:26:16,455 - [sysloger] - [ITSec] - DEBUG - deployment.py - 77 - [setResult] docker-hello-world-spring-boot
+2023-02-08 11:26:16,455 - [sysloger] - [ITSec] - DEBUG - deployment.py - 81 - [onStartDeploy] Service tpl create stage docker-hello-world-spring-boot
+2023-02-08 11:26:16,459 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying docker-hello-world-spring-boot - tmp/docker-hello-world-spring-boot/service.yaml...
+2023-02-08 11:26:16,539 - [sysloger] - [ITSec] - INFO - deployment.py - 158 - [onFinishedScan] docker-hello-world-spring-boot
+2023-02-08 11:26:16,539 - [sysloger] - [ITSec] - DEBUG - deployment.py - 153 - [setDeployStatus] docker-hello-world-spring-boot
+2023-02-08 11:26:20,367 - [sysloger] - [ITSec] - INFO - scheduler.py - 101 - Executing job "DeploymentChecker"
+2023-02-08 11:26:20,376 - [sysloger] - [ITSec] - INFO - main.py - 25 - Status of docker-hello-world: 2
+2023-02-08 11:26:20,376 - [sysloger] - [ITSec] - INFO - main.py - 25 - Status of python-flask-docker: -1
+2023-02-08 11:26:20,376 - [sysloger] - [ITSec] - INFO - main.py - 25 - Status of docker-nginx-hello-world: 2
+2023-02-08 11:26:20,376 - [sysloger] - [ITSec] - INFO - main.py - 25 - Status of docker-hello-world-spring-boot: 2
+2023-02-08 11:26:20,376 - [sysloger] - [ITSec] - INFO - main.py - 25 - Status of sample-job: 2
+2023-02-08 11:26:21,025 - [sysloger] - [ITSec] - INFO - main.py - 62 - Waiting to finish...
+2023-02-08 11:26:29,787 - [sysloger] - [ITSec] - DEBUG - deployment.py - 143 - [onDeploy] python-flask-docker
+2023-02-08 11:26:29,789 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying python-flask-docker - tmp/python-flask-docker/deployment.yaml...
+2023-02-08 11:26:29,876 - [sysloger] - [ITSec] - DEBUG - deployment.py - 77 - [setResult] python-flask-docker
+2023-02-08 11:26:29,893 - [sysloger] - [ITSec] - DEBUG - deployment.py - 81 - [onStartDeploy] Service tpl create stage python-flask-docker
+2023-02-08 11:26:29,904 - [sysloger] - [ITSec] - INFO - kubernetes.py - 27 - Deploying python-flask-docker - tmp/python-flask-docker/service.yaml...
+2023-02-08 11:26:30,040 - [sysloger] - [ITSec] - INFO - deployment.py - 158 - [onFinishedScan] python-flask-docker
+2023-02-08 11:26:30,040 - [sysloger] - [ITSec] - DEBUG - deployment.py - 153 - [setDeployStatus] python-flask-docker
+2023-02-08 11:26:31,028 - [sysloger] - [ITSec] - INFO - main.py - 64 - All the deployments have finished
+2023-02-08 11:26:31,031 - [sysloger] - [ITSec] - INFO - scheduler.py - 80 - Deleting Job "DeploymentChecker"
+2023-02-08 11:26:31,032 - [sysloger] - [ITSec] - INFO - main.py - 39 - Result of docker-hello-world: Deploy & service finished, time for a beer ;-)
+2023-02-08 11:26:31,032 - [sysloger] - [ITSec] - INFO - main.py - 39 - Result of python-flask-docker: Deploy & service finished, time for a beer ;-)
+2023-02-08 11:26:31,032 - [sysloger] - [ITSec] - INFO - main.py - 39 - Result of docker-nginx-hello-world: Deploy & service finished, time for a beer ;-)
+2023-02-08 11:26:31,032 - [sysloger] - [ITSec] - INFO - main.py - 39 - Result of docker-hello-world-spring-boot: Deploy & service finished, time for a beer ;-)
+2023-02-08 11:26:31,032 - [sysloger] - [ITSec] - INFO - main.py - 39 - Result of sample-job: Deploy & service finished, time for a beer ;-)

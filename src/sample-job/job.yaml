@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-job
+spec:
+  template:
+    metadata:
+      name: sample-job
+    spec:
+      containers:
+      - image: minikube/sample-job
+        imagePullPolicy: Never
+        name: sample-job
+      restartPolicy: Never

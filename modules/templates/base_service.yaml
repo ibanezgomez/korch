@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: <app_name>
+  name: <app_name>
+spec:
+  type: LoadBalancer
+  selector:
+    name: <app_name>
+  ports:
+  - protocol: TCP
+    port: <published_port>
+    targetPort: <container_port>
