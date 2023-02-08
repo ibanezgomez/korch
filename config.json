@@ -6,7 +6,7 @@
     "kubernetes": {
         "library":  "kubernetes",
         "config" : {
-            "kubeconfig": "/home/s/.kube/config"
+            "kubeconfig": "<kubeconfig_path>"
         }
     },
     "deployments": {
